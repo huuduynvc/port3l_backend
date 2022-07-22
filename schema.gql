@@ -1,0 +1,101 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type NftInput {
+  token_address: String!
+  token_id: String!
+  owner_of: String!
+  block_number: String!
+  block_number_minted: String!
+  token_hash: String!
+  contract_type: String!
+  name: String!
+  symbol: String!
+  token_uri: String!
+  metadata: String!
+}
+
+type User {
+  nfts: [NftInput!]!
+}
+
+type Order {
+  id: ID!
+  address: String!
+  is_payment: Boolean
+  order_items: [OrderItem!]!
+}
+
+type OrderItem {
+  order_id: String!
+  token_address: String!
+  token_id: String!
+  owner_of: String!
+  block_number: String!
+  block_number_minted: String!
+  token_hash: String!
+  contract_type: String!
+  name: String!
+  symbol: String!
+  token_uri: String!
+  metadata: String!
+}
+
+type Query {
+  hello: String!
+  getNfts(account: UserInput!): User!
+  findOrdersByAddress(address: String!): [Order!]!
+}
+
+input UserInput {
+  address: String!
+  chain: String!
+}
+
+type Mutation {
+  createOrder(createOrderInput: CreateOrderInput!): Order!
+  updateOrder(updateOrderInput: UpdateOrderInput!): Order!
+  createOrderItem(createOrderItemInput: CreateOrderItemInput!): OrderItem!
+}
+
+input CreateOrderInput {
+  address: String!
+  order_items: [OrderItemsInput!]!
+}
+
+input OrderItemsInput {
+  token_address: String!
+  token_id: String!
+  owner_of: String!
+  block_number: String!
+  block_number_minted: String!
+  token_hash: String!
+  contract_type: String!
+  name: String!
+  symbol: String!
+  token_uri: String!
+  metadata: String!
+}
+
+input UpdateOrderInput {
+  address: String
+  order_items: [OrderItemsInput!]
+  id: ID!
+  is_payment: Boolean = false
+}
+
+input CreateOrderItemInput {
+  order_id: String!
+  token_address: String!
+  token_id: String!
+  owner_of: String!
+  block_number: String!
+  block_number_minted: String!
+  token_hash: String!
+  contract_type: String!
+  name: String!
+  symbol: String!
+  token_uri: String!
+  metadata: String!
+}
