@@ -1,4 +1,5 @@
 import { ObjectType, InputType, Int, Field, ID } from '@nestjs/graphql';
+import { now } from 'mongoose';
 
 @InputType()
 export class OrderItemsInput {
@@ -37,4 +38,10 @@ export class OrderItemsInput {
 
   @Field()
   metadata: string;
+
+  @Field({nullable:true, defaultValue: new Date()})
+  creation_date: Date;
+
+  @Field({nullable:true, defaultValue: new Date()})
+  modification_date: Date;
 }

@@ -26,4 +26,10 @@ export class CreateOrderItemInput {
   readonly token_uri: string;
   @Field()
   readonly metadata: string;
+
+  @Field({ nullable: true })
+  creation_date: Date;
+
+  @Field({ nullable: true })
+  modification_date: Date;
 }

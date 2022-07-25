@@ -1,6 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document} from 'mongoose';
 
 export type OrderItemDocument = OrderItem & Document;
 
@@ -57,6 +57,14 @@ export class OrderItem {
   @Field()
   @Prop()
   metadata: string;
+
+  @Field({ nullable: true })
+  @Prop({ required: false })
+  creation_date: Date;
+
+  @Field({ nullable: true })
+  @Prop({ required: false })
+  modification_date: Date;
 }
 
 export const OrderItemSchema = SchemaFactory.createForClass(OrderItem);

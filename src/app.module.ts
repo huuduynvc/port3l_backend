@@ -6,7 +6,6 @@ import { ApolloDriver } from '@nestjs/apollo';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './user/user.module';
 import { OrderModule } from './order/order.module';
-import { OrderItemsModule } from './order-items/order-items.module';
 
 @Module({
   imports: [

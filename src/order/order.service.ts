@@ -12,7 +12,7 @@ export class OrderService {
   constructor(@InjectModel(Order.name) private orderModel: Model<OrderDocument>, private orderItemsService: OrderItemsService) {}
 
   async create(createOrderInput: CreateOrderInput): Promise<Order> {
-    console.log(createOrderInput);
+
     const createdOrder = new this.orderModel(createOrderInput);
     const order = await createdOrder.save();
     let order_items = createOrderInput.order_items.map(od=>({...od,order_id:order._id}))
